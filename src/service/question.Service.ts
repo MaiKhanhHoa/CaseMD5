@@ -1,7 +1,6 @@
 import {AppDataSource} from "../data-source";
 import {Question} from "../model/question";
 
-
 export class QuestionService {
     private questionRepository: any;
 

@@ -1,6 +1,6 @@
 import router from "express";
-import questionController from "../controller/questionController";
+import questionController from "../controller/question.Controller";
 
 export const questionRouter = router();
-questionRouter.get('/', questionController.showQuestion)
+questionRouter.get('/', questionController.showQuestions)
 questionRouter.post('/', questionController.createQuestion)

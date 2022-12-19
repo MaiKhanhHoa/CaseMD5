@@ -8,9 +8,9 @@ export class QuestionController {
         this.questionService = new QuestionService();
     }
 
-    showQuestion = async (req: Request, res: Response) => {
-        let question = await this.questionService.getAll()
-        res.json(question)
+    showQuestions = async (req: Request, res: Response) => {
+        let questions = await this.questionService.getAll()
+        res.json(questions)
     }
 
     createQuestion = async (req: Request, res: Response) => {

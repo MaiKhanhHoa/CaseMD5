@@ -10,4 +10,6 @@ export class Test {
     public idUserCreate: number;
     @Column({type: 'int'})
     public idCategory: number;
+    @Column({type: 'int'})
+    public quantityQuestion: number;
 }
