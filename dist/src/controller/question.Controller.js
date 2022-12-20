@@ -14,6 +14,18 @@ class QuestionController {
                 mess: "Tạo Question thành công"
             });
         };
+        this.deleteQuestion = async (req, res) => {
+            await this.questionService.remove(req.params.id);
+            res.json({
+                mess: "Xóa Question thành công"
+            });
+        };
+        this.editQuestion = async (req, res) => {
+            await this.questionService.updateQuestion(req.params.id, req.body);
+            res.json({
+                mess: "Sửa Question thành công"
+            });
+        };
         this.questionService = new question_Service_1.QuestionService();
     }
 }

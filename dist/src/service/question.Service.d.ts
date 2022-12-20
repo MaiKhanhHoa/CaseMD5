@@ -3,4 +3,6 @@ export declare class QuestionService {
     constructor();
     getAll: () => Promise<any>;
     createQuestion: (question: any) => Promise<void>;
+    remove: (idDelete: any) => Promise<void>;
+    updateQuestion: (idEdit: any, newQuestion: any) => Promise<void>;
 }

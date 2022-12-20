@@ -7,5 +7,6 @@ export class User {
     @Column({type: 'varchar'})
     public username: string;
     @Column({type: 'varchar'})
+
     public password: string;
 }

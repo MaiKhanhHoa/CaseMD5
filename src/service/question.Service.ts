@@ -18,4 +18,12 @@ export class QuestionService {
         await this.questionRepository.save(question);
     }
 
+    remove = async (idDelete) => {
+        await this.questionRepository.delete(idDelete);
+    }
+
+    updateQuestion = async (idEdit, newQuestion) => {
+        await this.questionRepository.update({idQuestion: idEdit}, newQuestion)
+    }
+
 }

@@ -22,7 +22,7 @@ __decorate([
     __metadata("design:type", String)
 ], Question.prototype, "nameQuestion", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'int', default: 0 }),
     __metadata("design:type", Number)
 ], Question.prototype, "pointQuestion", void 0);
 __decorate([
@@ -38,7 +38,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Question.prototype, "idUserCreate", void 0);
 Question = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'Question' })
 ], Question);
 exports.Question = Question;
 //# sourceMappingURL=question.js.map

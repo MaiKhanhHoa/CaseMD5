@@ -19,6 +19,20 @@ export class QuestionController {
             mess: "Tạo Question thành công"
         })
     }
+
+    deleteQuestion = async (req: Request, res: Response) => {
+        await this.questionService.remove(req.params.id);
+        res.json({
+            mess: "Xóa Question thành công"
+        })
+    }
+
+    editQuestion = async (req: Request, res: Response) => {
+        await this.questionService.updateQuestion(req.params.id, req.body);
+        res.json({
+            mess: "Sửa Question thành công"
+        })
+    }
 }
 
 export default new QuestionController();
