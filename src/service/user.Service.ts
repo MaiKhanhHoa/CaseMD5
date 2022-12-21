@@ -17,25 +17,29 @@ export class UserService {
     checkLogin = async (userLogin) => {
         let user = {
             check: false,
-            token: ''
+            token: '',
+            userFind: ''
         }
         let userFind = await this.userRepository.query(`select * from user where username = '${userLogin.username}'`);
-        let compare = await bcrypt.compare(userLogin.password, userFind[0].password)
 
         if (userFind.length === 0) {
             user.check = false;
+        } else {
+            let compare = await bcrypt.compare(userLogin.password, userFind[0].password)
+            if (!compare) {
+                user.check = false;
+            }
+            if (compare) {
+                let payload = {username: userFind[0].username}
+                let token = await jwt.sign(payload, SECRET, {
+                    expiresIn: 36000
+                })
+                user.token = token;
+                user.check = true;
+                user.userFind = userFind
+            }
         }
-        if (userFind !== 0 && !compare) {
-            user.check = false;
-        }
-        if (userFind !== 0 && compare) {
-            let payload = {username: userFind[0].username}
-            let token = await jwt.sign(payload, SECRET, {
-                expiresIn: 36000
-            })
-            user.token = token;
-            user.check = true;
-        }
+
         return user;
     }
 
@@ -69,5 +73,14 @@ export class UserService {
             check = true
         }
         return check
+    }
+
+    getAll = async () => {
+        return await this.userRepository.query(`select *
+                                                from user`)
+    }
+
+    remove = async (idDelete) => {
+        await this.userRepository.delete(idDelete);
     }
 }

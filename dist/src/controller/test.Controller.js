@@ -28,7 +28,6 @@ class TestController {
         };
         this.findTest = async (req, res) => {
             let tests = await this.testService.findTest(req.query.id, req.query.name);
-            console.log(tests);
             res.json(tests);
         };
         this.testService = new test_Service_1.TestService();

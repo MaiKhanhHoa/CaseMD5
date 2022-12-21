@@ -43,6 +43,16 @@ class UserController {
                 });
             }
         };
+        this.showUsers = async (req, res) => {
+            let users = await this.userService.getAll();
+            res.json(users);
+        };
+        this.deleteUser = async (req, res) => {
+            await this.userService.remove(req.params.id);
+            res.json({
+                mess: "Xóa User thành công"
+            });
+        };
         this.userService = new user_Service_1.UserService();
     }
 }

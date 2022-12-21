@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const question_Controller_1 = __importDefault(require("../controller/question.Controller"));
 exports.questionRouter = (0, express_1.default)();
 exports.questionRouter.get('/', question_Controller_1.default.showQuestions);
-exports.questionRouter.post('/', question_Controller_1.default.createQuestion);
+exports.questionRouter.post('/:id', question_Controller_1.default.createQuestion);
 exports.questionRouter.delete('/:id', question_Controller_1.default.deleteQuestion);
 exports.questionRouter.put('/:id', question_Controller_1.default.editQuestion);
 //# sourceMappingURL=questionRouter.js.map

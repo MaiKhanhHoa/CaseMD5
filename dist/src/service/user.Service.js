@@ -14,23 +14,27 @@ class UserService {
         this.checkLogin = async (userLogin) => {
             let user = {
                 check: false,
-                token: ''
+                token: '',
+                userFind: ''
             };
             let userFind = await this.userRepository.query(`select * from user where username = '${userLogin.username}'`);
-            let compare = await bcrypt_1.default.compare(userLogin.password, userFind[0].password);
             if (userFind.length === 0) {
                 user.check = false;
             }
-            if (userFind !== 0 && !compare) {
-                user.check = false;
-            }
-            if (userFind !== 0 && compare) {
-                let payload = { username: userFind[0].username };
-                let token = await jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
-                    expiresIn: 36000
-                });
-                user.token = token;
-                user.check = true;
+            else {
+                let compare = await bcrypt_1.default.compare(userLogin.password, userFind[0].password);
+                if (!compare) {
+                    user.check = false;
+                }
+                if (compare) {
+                    let payload = { username: userFind[0].username };
+                    let token = await jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
+                        expiresIn: 36000
+                    });
+                    user.token = token;
+                    user.check = true;
+                    user.userFind = userFind;
+                }
             }
             return user;
         };
@@ -62,6 +66,13 @@ class UserService {
                 check = true;
             }
             return check;
+        };
+        this.getAll = async () => {
+            return await this.userRepository.query(`select *
+                                                from user`);
+        };
+        this.remove = async (idDelete) => {
+            await this.userRepository.delete(idDelete);
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.userRepository = data_source_1.AppDataSource.getRepository(user_1.User);

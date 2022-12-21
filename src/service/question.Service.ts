@@ -11,7 +11,8 @@ export class QuestionService {
     }
 
     getAll = async () => {
-        return await this.questionRepository.query(`select * from question`)
+        return await this.questionRepository.query(`select *
+                                                    from question`)
     }
 
     createQuestion = async (question) => {
@@ -26,4 +27,12 @@ export class QuestionService {
         await this.questionRepository.update({idQuestion: idEdit}, newQuestion)
     }
 
+    setPointQuestion = async (idTest) => {
+        const count = await this.questionRepository.query(`select COUNT(idTest) as quantityQuestion
+                                                           from question
+                                                           where idTest = ${idTest}`)
+        await this.questionRepository.query(`UPDATE question
+                                             SET pointQuestion = 100 / ${count[0].quantityQuestion}
+                                             where idTest = ${idTest}`)
+    }
 }

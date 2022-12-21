@@ -5,4 +5,5 @@ export declare class QuestionService {
     createQuestion: (question: any) => Promise<void>;
     remove: (idDelete: any) => Promise<void>;
     updateQuestion: (idEdit: any, newQuestion: any) => Promise<void>;
+    setPointQuestion: (idTest: any) => Promise<void>;
 }

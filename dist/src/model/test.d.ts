@@ -3,5 +3,4 @@ export declare class Test {
     nameTest: string;
     idUserCreate: number;
     idCategory: number;
-    quantityQuestion: number;
 }

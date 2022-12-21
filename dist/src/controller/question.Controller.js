@@ -10,6 +10,7 @@ class QuestionController {
         };
         this.createQuestion = async (req, res) => {
             await this.questionService.createQuestion(req.body);
+            await this.questionService.setPointQuestion(req.params.id);
             res.json({
                 mess: "Tạo Question thành công"
             });

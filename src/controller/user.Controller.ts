@@ -46,6 +46,18 @@ export class UserController {
             })
         }
     }
+
+    showUsers = async (req: Request, res: Response) => {
+        let users = await this.userService.getAll()
+        res.json(users)
+    }
+
+    deleteUser = async (req: Request, res: Response) => {
+        await this.userService.remove(req.params.id);
+        res.json({
+            mess: "Xóa User thành công"
+        })
+    }
 }
 
 export default new UserController();

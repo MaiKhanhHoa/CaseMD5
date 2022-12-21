@@ -29,10 +29,6 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
 ], Test.prototype, "idCategory", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
-    __metadata("design:type", Number)
-], Test.prototype, "quantityQuestion", void 0);
 Test = __decorate([
     (0, typeorm_1.Entity)()
 ], Test);
