@@ -28,10 +28,6 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], Question.prototype, "quantityTrueAnswer", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
-    __metadata("design:type", Number)
 ], Question.prototype, "idTest", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),

@@ -15,7 +15,7 @@ export class QuestionController {
 
     createQuestion = async (req: Request, res: Response) => {
         await this.questionService.createQuestion(req.body);
-        await this.questionService.setPointQuestion(req.params.id);
+        await this.questionService.setPointQuestion(req.body.idTest);
         res.json({
             mess: "Tạo Question thành công"
         })

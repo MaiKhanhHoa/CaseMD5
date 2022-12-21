@@ -9,8 +9,6 @@ export class Question {
     @Column({type: 'int',default: 0})
     public pointQuestion: number;
     @Column({type: 'int'})
-    public quantityTrueAnswer: number;
-    @Column({type: 'int'})
     public idTest: number;
     @Column({type: 'int'})
     public idUserCreate: number;
